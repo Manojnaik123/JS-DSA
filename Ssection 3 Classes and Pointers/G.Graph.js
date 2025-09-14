@@ -1,5 +1,36 @@
-// There are couple of ways to store graphs. One is adjacency matrix and other is adjacency list. 
+// Graphs 
+// it is a data structure used to represent the relationships between objects. 
+// Objects are called the vertices(or nodes)
+// the connections are called edges (or links)
 
+// Example 
+// Think of facebook 
+// > Here each person is a vertex
+// > A friendship between two people is an edge
+// So, graph shows that who is connected to whom. 
+
+// Types of graph 
+// 1- Undirected graph 
+// > Edges do not have the direction
+
+// 2 - Directed Graph (Digraph)
+// > Edges have direction
+
+// 3 - Weighted graph 
+// > Edges have weight 
+
+// 4 - Unweighted graph 
+// > All edges are equal, no weight 
+
+// 5 - Cyclic vs Acyclic 
+// > Cyclic - contains cycles (you can loop back to the same node)
+// > Acyclic - no cycle ( example DAG - block chain)
+
+// 6 - Connected vs Disconnected 
+// > Connected - every node reachable from any other. 
+// > Disconnected - some nodes are isolated. 
+
+// There are couple of ways to store graphs. One is adjacency matrix and other is adjacency list. 
 
 class Graph {
     constructor() {
@@ -65,10 +96,7 @@ myGraph.addEdge('A', 'B')
 myGraph.addEdge('C', 'A')
 myGraph.addEdge('C', 'B')
 
-
-console.log(myGraph.removeVertex('C'));
-console.log(myGraph.removeVertex('B'));
-
+myGraph.removeVertex('A')
 
 console.log(myGraph);
 

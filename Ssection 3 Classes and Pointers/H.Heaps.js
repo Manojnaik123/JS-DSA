@@ -21,14 +21,14 @@
 
 
 class Heap{
-    #heap = [];
+    #heap = [];   // Here '#' refers to the private class field. This field cannot be accessed outside the class. 
 
     // helper methods --------------------------------------
     getHeap(){
         return [...this.#heap];
     }
 
-    #leftChild(index){
+    #leftChild(index){  // You cannot access this function outside the class. 
         return 2 * index+1;
     }
 
@@ -44,23 +44,38 @@ class Heap{
         [this.#heap[index1], this.#heap[index2]] = [this.#heap[index2], this.#heap[index1]]
     }
 
-    #sinkDown(index){
-        var maxIndex = this.#heap.length;
+    #sinkDown(index) {
+        let largest = index;
+        const left = this.#leftChild(index);
+        const right = this.#rightChild(index);
+        const size = this.#heap.length;
+
+        if (left < size && this.#heap[left] > this.#heap[largest]) {
+            largest = left;
+        }
+
+        if (right < size && this.#heap[right] > this.#heap[largest]) {
+            largest = right;
+        }
+
+        if (largest !== index) {
+            this.#swap(index, largest);
+            this.#sinkDown(largest);  // keep sinking until heap is valid
+        }
     }
     // --------------------------------------
 
     insert(value){
         this.#heap.push(value);
         var current = this.#heap.length - 1;
-        while(current > 0 
-            && this.#heap[current] > this.#heap[this.#parent(current)])
+        while(current > 0 && this.#heap[current] > this.#heap[this.#parent(current)])
         {
             this.#swap(current, this.#parent(current))
             current = this.#parent(current);
         }
     }
 
-    // In heap we only remoe one item that is at the top(root).
+    // In heap we only remove one item that is at the top(root).
     remove(){
         if(this.#heap.length === 0){
             return null;

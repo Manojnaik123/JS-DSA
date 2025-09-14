@@ -10,9 +10,9 @@
 // This approach will reduce time complexity. 
 
 //  | |
-//  |O|-2
-//  |O|-1
-//  |O|-0
+//  |O|-> 2
+//  |O|-> 1
+//  |O|-> 0
 
 // In linked list to remove and add elements from the begining has time complexity of O(1);
 // Whereas, for removing and adding elements from the end the complexity is O(n) & O(1);
@@ -20,9 +20,9 @@
 // In case of LL, we had head and tail. But, in stacks we have top. We, dont need bottom. 
 
 //  | |
-//  |O|-2
-//  |O|-1
-//  |O|-0 <= top
+//  |O|-> 2
+//  |O|-> 1
+//  |O|-> 0 <= top
 
 import Node from './A.LinkedList.js';
 

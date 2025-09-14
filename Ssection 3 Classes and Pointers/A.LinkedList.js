@@ -144,7 +144,6 @@ class LinkedList {
             prev = temp;
             temp = next;
         }
-
         return this;
     }
 }
@@ -164,8 +163,3 @@ myList.remove(0); // removes node from the index
 myList.insert(1, 4); // inserts new node at the given index
 
 myList.reverse(); // reverses the LL
-
-
-
-
-
