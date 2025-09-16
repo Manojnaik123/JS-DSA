@@ -108,6 +108,27 @@ class DoublyLinkedList {
         return temp;
     }
 
+    get_optimized(index) {
+    if (index < 0 || index >= this.length) return undefined;
+
+    let current;
+    if (index < this.length / 2) {
+        // Traverse from head
+        current = this.head;
+        for (let i = 0; i < index; i++) {
+            current = current.next;
+        }
+    } else {
+        // Traverse from tail
+        current = this.tail;
+        for (let i = this.length - 1; i > index; i--) {
+            current = current.prev;
+        }
+    }
+
+    return current;
+}
+
     set(index, value) {
         var temp = this.get(index);
         if (temp) {
@@ -187,6 +208,26 @@ class DoublyLinkedList {
 
         this.length--;
         return temp;
+    }
+
+    reverse(){
+        if(this.length === 0) return undefined;
+
+        var temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+
+        var ptr;
+
+        while(temp){
+            ptr = temp.prev;
+            temp.prev = temp.next;
+            temp.next = ptr;
+
+            temp = temp.prev;
+        }
+
+        return this;
     }
 }
 

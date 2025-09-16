@@ -98,33 +98,45 @@ class LinkedList {
         return false;
     }
 
-    insert(index, value) {
+    insert(index, value){
+        if(index < 0 || index > this.length) return false;
+        if(index === 0){
+            this.unShift(value);
+            return true;
+        }
+        if(index === this.length){
+            this.push(value);
+            return true;
+        }
 
-        if (index === 0) return this.unShift(value);
-        if (index === this.length) return this.push(value);
-        if (index < 0 || index > this.length) return false;
-
-        var temp = this.get(index - 1);
         var newNode = new Node(value);
+        var current = this.get(index - 1);
+        newNode.next = current.next;
+        current.next = newNode;
 
-        newNode.next = temp.next;
-        temp.next = newNode;
-        this.length++;
+        this.length++
         return true;
     }
 
-    remove(index) {
-        if (index === 0) return this.shift();
-        if (index === this.length - 1) return this.pop();
-        if (index < 0 || index >= this.length) return undefined;
+    remove(index){
+        if (index < 0 || index >= this.length) return false;
+        if(index === 0) {
+            this.shift();
+            return true;
+        } 
+        if(index === this.length - 1){
+            this.pop();
+            return true; 
+        }
 
-        var before = this.get(index - 1);
-        var temp = before.next;
+        var prev = this.get(index - 1);
+        var current = this.get(index);
 
-        before.next = temp.next;
-        temp.next = null;
+        prev.next = current.next;
+        current.next = null;
+
         this.length--;
-        return temp;
+        return true;
     }
 
     reverse() {
