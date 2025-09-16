@@ -12,4 +12,3 @@
 // Dijkstra's algorithm, 
 // Kruskal's algorithm, 
 // Huffman coding and Prim's Algorithm
-
