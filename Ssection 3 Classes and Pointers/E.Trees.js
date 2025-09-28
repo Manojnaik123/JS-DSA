@@ -14,7 +14,7 @@
 // Perfect tree- Every line in the tree has all elements.
 // Complete tree- 
     // Each node has at most 2 children.
-    // All levels are full, except the last.
+    // All levels except possibly the last are full.
     // The last level fills from left to right with no gaps.
 
 // The node in the top is called root node.
@@ -69,7 +69,7 @@ class BinarySearchTree {
             }
         }
     }
-
+    
     contains(value){
         if(!this.root) return undefined;
         var temp = this.root;

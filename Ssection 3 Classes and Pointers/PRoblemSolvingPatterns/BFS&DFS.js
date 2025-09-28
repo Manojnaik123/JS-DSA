@@ -30,7 +30,7 @@
         Pick a starting node.
         Go down one path until you can’t go further.
         Then backtrack and explore other unvisited nodes.
-        * We have to use a Stact to maintain the record of the previous vertexces. 
+        * We have to use a Stact to maintain the record of the previous verteices. 
     
  Example: 
    A

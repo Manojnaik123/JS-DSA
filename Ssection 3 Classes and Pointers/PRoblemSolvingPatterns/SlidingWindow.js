@@ -16,7 +16,7 @@ update the result effeciently.
  ! Types of Sliding Window
 -----------------------------------------------------------
 1 - Fixed-Size Window (Here, window length is fixed).
-    Example: Find the maximum sun of any subarray of size k.
+    Example: Find the maximum sum of any subarray of size k.
 
 2-  Variable-Size Window (Here, window grows and shrinks based on condition).
     Example: Find the smallest sub array with sum >= target.

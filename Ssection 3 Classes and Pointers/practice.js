@@ -1,25 +1,91 @@
-function minSubArrayLen(target, arr) {
-    let n = arr.length;
-    let left = 0, sum = 0, minLen = Infinity;
+// graphs 
 
-    for (let right = 0; right < n; right++) {
-        sum += arr[right];
+// detecting cycles. 
 
-        console.log(`Expand → right=${right}, added ${arr[right]}, sum=${sum}, window=[${arr.slice(left, right+1)}]`);
-
-        while (sum >= target) {
-            minLen = Math.min(minLen, right - left + 1);
-            console.log(`  ✅ sum=${sum} >= ${target}, shrink window: left=${left}, length=${right-left+1}`);
-            sum -= arr[left];
-            left++;
-            console.log(`  After shrink → sum=${sum}, window=[${arr.slice(left, right+1)}]`);
-        }
-    }
-
-    return minLen === Infinity ? 0 : minLen;
+var graph = {
+    A: ['B', 'C'],
+    C: ['B', 'D'],
+    B: ['D'],
+    D: []
 }
 
-// Example Run
-let arr = [3, 5, 1, 4, 2];
-let target = 11;
-console.log("Result:", minSubArrayLen(target, arr));
+function dfs(graph, vertex) {
+    var visited = new Set();
+    var stack = [vertex];
+    var list = [];
+    visited.add(vertex);
+
+    while (stack.length > 0) {
+        var node = stack.pop();
+        list.push(node);
+
+        // This is correct but it is good to process the neighbours in left to right order. 
+        // for(let neighbour of graph[node] || []){
+        //     if(!visited.has(neighbour)){
+        //         stack.push(neighbour)
+        //         visited.add(neighbour)
+        //     }
+        // }
+
+        // this will process the neighbours left to right. 
+        var neighbours = graph[node] || [];
+        for (var i = neighbours.length - 1; i >= 0; i++) {
+            if (!visited.has(neighbours[i])) {
+                visited.add(neighbours[i]);
+                stack.push(neighbours[i]);
+            }
+        }
+    }
+    return list;
+}
+
+// console.log(dfs(graph, 'B'));
+
+
+// Lets us detect cycle in the graph. 
+// On the path if we visit the visited node then the cycle exists. 
+
+// !Here, Undirected is the key
+// Cycle detection in the Undirected graph using the khans algorithm. 
+
+// Using BFS approach 
+
+function hasCycle(graph, v) {
+    let visited = new Set();
+    let queue = [[v, -1]];
+    visited.add(v);
+
+    while (queue.length > 0) {
+        let [node, parent] = queue.shift();
+
+        for (let neighbour of graph[node] || []) {
+            if (!visited.has(neighbour)) {
+                queue.push([neighbour, node]);
+                visited.add(neighbour);
+            } else if (neighbour !== parent) {
+                return true; // found a cycle
+            }
+        }
+    }
+    return false;
+}
+
+var x = {
+    A: ['B', 'C'],
+    B: ['A', 'C', 'D'],
+    C: ['A', 'B', 'C'],
+    D: ['C', 'B']
+}
+
+let graph1 = {
+    A: ['B'],
+    B: ['A', 'C'],
+    C: ['B', 'D'],
+    D: ['C']
+};
+
+
+console.log(hasCycle(graph1, 'A'));
+
+// detecting a cycle in an undirected graph using dfs 
+

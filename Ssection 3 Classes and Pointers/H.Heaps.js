@@ -20,7 +20,7 @@
 
 
 
-class Heap{
+export class Heap{
     #heap = [];   // Here '#' refers to the private class field. This field cannot be accessed outside the class. 
 
     // helper methods --------------------------------------
@@ -94,21 +94,42 @@ class Heap{
     }
 }
 
-const myHeap = new Heap();
+//----------------------------------------------------
+// ! Heapify 
+// This heapify function only heapifys the heap from the index. 
+//----------------------------------------------------
 
-myHeap.insert(99)
-myHeap.insert(72)
-myHeap.insert(61)
-myHeap.insert(58)
+export function heapify(array, index){
+    var largest = index;
+    var left = 2 * largest + 1;
+    var right = 2* largest +2;
 
-console.log(myHeap.getHeap());
+    if(left< array.length && array[left] > array[largest]){
+        largest = left;
+    }
+    if(right < array.length && array[right] > array[largest]){
+        largest = right;
+    }
 
-myHeap.insert(100);
+    if(largest !== index){        
+        [array[largest], array[index]] = [array[index], array[largest]];
+        heapify(array, largest);
+    }
+}
 
-console.log(myHeap.getHeap());
+// var list = [1,2,3,4,5,6];
 
-myHeap.insert(75);
+// heapify(list, 2)
+// heapify(list, 1)
+// heapify(list, 0)
 
-console.log(myHeap.getHeap());
+// To automate the heapify of the entire list we can use 
+
+// for(let x = Math.floor(list.length/2) - 1; x >= 0; x-- ){
+//     heapify(list, x);
+// }
+
+// console.log(list);
+
 
 

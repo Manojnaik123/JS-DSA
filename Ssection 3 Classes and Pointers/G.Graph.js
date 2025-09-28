@@ -83,7 +83,6 @@ class Graph {
         delete this.adjacencyList[vertex];
         return this;
     }
-
 }
 
 var myGraph = new Graph();
