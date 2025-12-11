@@ -191,6 +191,11 @@ class BinaryTree {
         console.log(root.value);
     }
 
+    // its to complex to understand this, it is better to stick to the iterative version. 
+    levelOrder(root){
+
+    }
+
     // deletion - Here we will pop the right most element of the tree and then replace it with the 
     // node which we want to delete.
     // Now, the challenge is to find the right most node.
@@ -198,61 +203,66 @@ class BinaryTree {
     // This code is written by me but it is recommended to track the parent of the last node seperately. 
     // Go throught that approach after becoming intuitive with this one. 
 
-    // ! potential issue : Tracking parentOfLast – could fail if the last node in BFS is a left child 
-    // ! and parentOfLast got updated due to the right child check before it.
     delete(value) {
-        // first retrun null if the tree is empty.
+        // handle empty binary tree 
         if (!this.root) return null;
-        // check if the tree has only one element.
-        // in this case check if the nodes value matches to the target, if yes, set the root to null.
-        if (!this.root.left && !this.root.right) {
-            var temp = this.root;
-            this.root = null;
-            return temp.value;
-        }
-        // now perform BFS traversal on the binary tree
-        // durign this process find the target and the deepest node value
-        // if you find the target replace it with the deepest node
-        // lastly, returnt the removed target node. 
 
+        // if there is only one node
+        if (!this.root.left && !this.root.right) {
+            if (this.root.value === value) {
+                var target = this.root;
+                this.root = null;
+                return target.value;
+            }
+            return false;
+        }
+
+        // level order traversal to find the deepest and key node
         var queue = [this.root];
-        var target = null;
-        var deepestNode = null;
-        var parentOfLast = null;
+
+        var keyNode = null;
+        var current = null;
 
         while (queue.length > 0) {
-            var node = queue.shift();
-            if (node.value === value) {
-                target = node;
+            current = queue.shift();
+
+            if (current.value === value) {
+                keyNode = current;
             }
-            deepestNode = node;
+
+            if (current.left) queue.push(current.left);
+            if (current.right) queue.push(current.right);
+        }
+
+        if (!keyNode) return null;
+
+        keyNode.value = current.value;
+
+        // removing the last node whose value we assigned to the keynode. 
+        var queue1 = [this.root];
+
+        while (queue1.length > 0) {
+            var node = queue1.shift();
 
             if (node.left) {
-                parentOfLast = node;
-                queue.push(node.left);
+                if (node.left === current) {
+                    node.left = null;
+                    return value;
+                } else {
+                    queue1.push(node.left);
+                }
             }
+
             if (node.right) {
-                parentOfLast = node;
-                queue.push(node.right);
+                if (node.right === current) {
+                    node.right = null;
+                    return value;
+                } else {
+                    queue1.push(node.right);
+                }
             }
         }
-
-        // console.log('lastelement', deepestNode);
-        // console.log('target', target);
-        var removedElement = target.value;
-
-        if (target) {
-            target.value = deepestNode.value;
-            if (parentOfLast.left.value === deepestNode.value) {
-                parentOfLast.left = null;
-            } else {
-                parentOfLast.right = null;
-            }
-        } else {
-            return null;
-        }
-
-        return removedElement;
+        return value;
     }
 }
 

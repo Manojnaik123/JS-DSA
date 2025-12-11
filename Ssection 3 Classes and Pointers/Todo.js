@@ -183,3 +183,92 @@
     // revise binary tree insert delete.
     // go through all the iterative traversals.
     // go through all the recursive traversals. 
+
+
+// ! 30-09-2025
+// todo Complete graph p1
+    // // learn detection cycle in undirected using dfs and bfs.
+    // // learn detecting cycle in directed graph using bfs.
+    // learn detecting cycle in directed graph using dfs.
+        // ? For most beginners, BFS/Kahn’s algorithm is easier to understand.
+        // ? DFS is more elegant and widely used, but it requires a deeper understanding.
+        // ? of recursion and the recursion stack.
+    // revise all topics.
+
+// todo revise trees p1
+    // // revise binary tree insert delete.
+    // // go through all the iterative traversals.
+    // // go through all the recursive traversals.
+
+// ! 01-10-2025
+// todo revise trees p1
+//   //  revise binary tree insert delete.
+//   //  go through all the iterative traversals.
+//   //  go through all the recursive traversals. - recursive level order not needed.
+
+// todo Complete graph p1
+    // //learn detection cycle in undirected using dfs and bfs.
+    //// learn detecting cycle in directed graph using bfs.
+    // ! learn detecting cycle in directed graph using dfs. p0
+        // ? For most beginners, BFS/Kahn’s algorithm is easier to understand.
+        // ? DFS is more elegant and widely used, but it requires a deeper understanding.
+        // ? of recursion and the recursion stack.
+    // revise all topics.
+
+// todo complete the tic tack game all features.
+
+// !02-10-2025
+// todo Complete graph p1
+    // //learn detection cycle in undirected using dfs and bfs.
+    //// learn detecting cycle in directed graph using bfs.
+// todo revise all sorting algorithms
+    // // bubleSort
+    // // selectionSort
+    // // insertionSort
+    // // mergeSort
+    // // quickSort 
+    // ! quick sort completed but deep understanding needed of recursion. 
+
+// // todo learn counting sort
+
+// todo learn heap sort
+
+// todo complete the tic tack game all features
+
+// todo revise sliding window p0
+
+// ! 03-10-25
+// // todo learn heap sort
+
+// // todo complete the tic tack game all features
+
+// // todo revise sliding window
+
+// ! 11-12-25
+
+// // todo revise dsa asymptotic notations 
+// // todo complete masters theorem
+// todo make notes of the above pyqs
+// // btodo - addon- collected alll pyqs from 2015 to 2025
+
+// todo revise sliding window protocol
+
+// todo topological sorting
+ 
+// * overestimated my limit got so many questions of dsa sliding window and topological sorting 
+// * inshort there were many things to do 
+
+// ! 12-12-2025
+// * call aunty
+// * get recharged 
+
+    // ? Time - 40 min four cycle 
+        // todo learn masters theorem dive and concuer part 
+        // todo make notes of the completed portion 
+        // todo solve atleast 10 pyqs related to asymptotic time complexity 
+
+    // ? time - 
+        // todo - complte sliding window protocol 
+        // todo - document all the problems
+        // todo - revise tht topological sorting completed part deeply  
+
