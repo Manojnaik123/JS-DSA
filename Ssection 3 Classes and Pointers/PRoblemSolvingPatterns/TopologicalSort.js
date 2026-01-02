@@ -1,3 +1,7 @@
+// What is Topological Sorting?
+// Topological sorting is a linear ordering of vertices in a directed graph such that
+// for every directed edge u → v, u appears before v in the ordering.
+
 // Topological sorting - The Graph must be a Directed Acyclic Graph.
 // 1 - Directed -> Edges have direction (A->b).
 // 2 - Acyclic -> No cycles (You cannot have A->B->A).
@@ -18,11 +22,10 @@
 //  We can do this with two ways, they are-
 // 1- Kahn's Algorithm
 // 2- DFS-based approach 
-// 
 
 // We will start with the DFS based approach
 // This will help me understand the idea of the dependencies 
-// Key idea - a node can oly be placed in the topo if it's neighbours are already processes. 
+// Key idea - a node can only be placed in the topo if it's neighbours are already processes. 
 
 // ! DFS based Topological sorting 
 

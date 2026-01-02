@@ -92,3 +92,30 @@ function depthFirstSearch(graph, vertex, visited = new Set()){
 }
 
 depthFirstSearch(graph, 'A');
+
+// this is also correct iterative approach 
+function dfsIterative(graph, start) {
+    let visited = new Set();
+    let stack = [start];
+    let order = [];
+
+    while (stack.length > 0) {
+        let node = stack.pop();
+
+        if (!visited.has(node)) {
+            visited.add(node);
+            order.push(node);
+
+            // Push neighbors in reverse order
+            // to match recursive DFS order
+            let neighbors = graph[node];
+            for (let i = neighbors.length - 1; i >= 0; i--) {   // we can use for off loop but it will not provide same order as the iterative version. 
+                if (!visited.has(neighbors[i])) {
+                    stack.push(neighbors[i]);
+                }
+            }
+        }
+    }
+
+    return order;
+}

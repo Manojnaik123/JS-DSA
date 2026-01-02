@@ -47,6 +47,7 @@ update the result effeciently.
 
 // * Time complexity - O(n)
 function fixedWindow(a, k) {
+    if(a.length < k|| k<=0) return null; // edge case 
     var n = a.length;
     var windowSum = 0;
     var maxSum = 0;
@@ -269,6 +270,5 @@ function longestSubarraySumK(arr, k) {
             longest = Math.max(longest, r - l + 1);
         }
     }
-
     return longest;
 }
